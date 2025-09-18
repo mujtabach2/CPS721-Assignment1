@@ -6,8 +6,8 @@
 %%%%% NAME:
 %%%%% STUDENT ID:
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Hamed Bakkar
+%%%%% STUDENT ID:501226875
 %%%%%
 %%%%% NAME:
 %%%%% STUDENT ID:
