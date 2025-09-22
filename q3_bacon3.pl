@@ -45,7 +45,7 @@ path2(Current, Target, Mov1, Mov2, Rem, Passed1, Passed2) :-
     update_flags(Passed1, Passed2, Mov, Mov1, Mov2, NewPassed1, NewPassed2),
     path2(Next, Target, Mov1, Mov2, Rem - 1, NewPassed1, NewPassed2).
 
-% Update flags without using ->
+
 update_flags(1, 1, _, _, _, 1, 1).
 
 update_flags(1, 0, Mov, Mov1, Mov2, 1, NewPassed2) :-
@@ -62,7 +62,6 @@ find_coactors(A1, Mov, A3) :-
     actedIn(A3, Mov, _),
     not(A1 = A3).
 
-% Main predicate: Start with both flags unset (0,0)
 canReachThrough2Movies(A1, A2, Mov1, Mov2, M) :-
     path2(A1, A2, Mov1, Mov2, M, 0, 0).
 

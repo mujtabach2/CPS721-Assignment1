@@ -45,8 +45,7 @@ path2(Current, Target, Mov1, Mov2, Rem, Passed1, Passed2) :-
     NewRem is Rem - 1,
     path2(Next, Target, Mov1, Mov2, NewRem, NewPassed1, NewPassed2).
 
-% Update flags - without using -> operator
-% If both flags are already set, keep them set
+
 update_flags(1, 1, _, _, _, 1, 1).
 
 % If first flag is set but second isnt, check if current movie is Mov2
