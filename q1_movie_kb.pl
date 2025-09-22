@@ -3,8 +3,8 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Abdulrehman Saleh
+%%%%% STUDENT ID: 501269110
 %%%%%
 %%%%% NAME: Hamed Bakkar
 %%%%% STUDENT ID: 501226875
@@ -22,6 +22,8 @@
 
 %%%%% SECTION: q1_kb
 %%%%% You should put the atomic statements for your KB below
+
+releaseInfo()
 
 
 
