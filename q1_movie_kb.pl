@@ -19,11 +19,8 @@
 % You may add additional comments as you choose but DO NOT MODIFY 
 % the already included comment lines below
 
-
 %%%%% SECTION: q1_kb
 %%%%% You should put the atomic statements for your KB below
-
-
 
 releaseInfo(inception, 2010, 148).
 releaseInfo(titanic, 1997, 195).
@@ -43,6 +40,10 @@ directedBy(avengers_endgame, anthony_russo).
 directedBy(avengers_endgame, joe_russo).
 directedBy(parasite, bong_joon_ho).
 directedBy(joker, todd_phillips).
+directedBy(the_dark_knight, christopher_nolan).
+directedBy(gladiator, ridley_scott).
+directedBy(pulp_fiction, quentin_tarantino).
+directedBy(the_matrix, wachowski_sisters).
 
 actedIn(leonardo_dicaprio, inception, dom_cobb).
 actedIn(kate_winslet, titanic, rose_dewitt_bukater).
@@ -51,8 +52,11 @@ actedIn(robert_downey_jr, avengers_endgame, tony_stark).
 actedIn(keanu_reeves, the_matrix, neo).
 actedIn(song_kang_ho, parasite, kim_ki-taek).
 actedIn(joaquin_phoenix, joker, arthur_fleck).
-
-
+actedIn(christian_bale, the_dark_knight, bruce_wayne).
+actedIn(russell_crowe, gladiator, maximus).
+actedIn(john_travolta, pulp_fiction, vincent_vega).
+actedIn(tom_hanks, inception, _).  % Added for testing
+actedIn(tom_hanks, titanic, _).   % Added for testing
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW

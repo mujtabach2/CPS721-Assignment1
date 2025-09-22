@@ -28,7 +28,6 @@
 
 
 %%%%% SECTION: q3a_queries
-% Put your queries for testing canReach in this section
 
 %%%%%% QUERY 1
 % EXPLANATION: 

@@ -3,14 +3,14 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Abdulrehman Saleh
+%%%%% STUDENT ID: 501269110
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Hamed Bakkar
+%%%%% STUDENT ID: 501226875
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME:Mujtaba Chaudhry
+%%%%% STUDENT ID: 501192713
 %
 % Add the required statements in the q3a_can_reach_through_movie section below.
 % Any helper predicates should also be added to that section.
@@ -20,28 +20,67 @@
 % You may add additional comments as you choose but DO NOT MODIFY 
 % the already included comment lines below
 %
-
-
-%%%%% SECTION: q3b_kb_import
+%%%%% SECTION: q3c_kb_import
 % The following line will import your movie KB. You can feel free to
 % edit this line if you want to import and test on different KBs.
 % We will ignore this section when testing your code, and instead test
 % on our own KBs.
 :- [q1_movie_kb].
 
+%%%%% SECTION: q3c_can_reach_through_2_movies
+% You define canReachThrough2Movies and any helper predicates below.
+% Do NOT use an import statement to reuse q3b code.
 
+% Base case: Reach target only if both movies are included (Passed1=1 and Passed2=1)
+path2(A, A, _, _, Rem, 1, 1) :-
+    Rem >= 0.
 
-%%%%% SECTION: q3b_can_reach_through_movie
-% You define canReachThroughMovie and any helper predicates below.
-% If you decide to reuse your canReach implementation from q3a as part of this solution, 
-% include it below. To avoid collision if you first compile q3_bacon1 and then q3_bacon2,
-% we suggest you rename canReach to something else.
-% Do NOT use an import statement like the one in section q3b_kb_import to import and reuse
-% your answer to part (a) below. 
+% Recursive case: Move to next actor via a movie, update flags
+path2(Current, Target, Mov1, Mov2, Rem, Passed1, Passed2) :-
+    Rem > 0,
+    actedIn(Current, Mov, _),
+    find_coactors(Current, Mov, Next),
+    not(Current = Next),
+    update_flags(Passed1, Passed2, Mov, Mov1, Mov2, NewPassed1, NewPassed2),
+    NewRem is Rem - 1,
+    path2(Next, Target, Mov1, Mov2, NewRem, NewPassed1, NewPassed2).
 
+% Update flags - without using -> operator
+% If both flags are already set, keep them set
+update_flags(1, 1, _, _, _, 1, 1).
 
+% If first flag is set but second isnt, check if current movie is Mov2
+update_flags(1, 0, Mov2, _, Mov2, 1, 1).
+update_flags(1, 0, Mov, _, Mov2, 1, 0) :-
+    not(Mov = Mov2).
 
+% If second flag is set but first isnt, check if current movie is Mov1
+update_flags(0, 1, Mov1, Mov1, _, 1, 1).
+update_flags(0, 1, Mov, Mov1, _, 0, 1) :-
+    not(Mov = Mov1).
 
+% If neither flag is set, check both movies
+update_flags(0, 0, Mov, Mov1, Mov2, NewPassed1, NewPassed2) :-
+    check_movie1(Mov, Mov1, NewPassed1),
+    check_movie2(Mov, Mov2, NewPassed2).
+
+% Helper predicates for movie checking
+check_movie1(Mov1, Mov1, 1).
+check_movie1(Mov, Mov1, 0) :-
+    not(Mov = Mov1).
+
+check_movie2(Mov2, Mov2, 1).
+check_movie2(Mov, Mov2, 0) :-
+    not(Mov = Mov2).
+
+% Find co-actors in the same movie
+find_coactors(A1, Mov, A3) :-
+    actedIn(A3, Mov, _),
+    not(A1 = A3).
+
+% Main predicate: Start with both flags unset (0,0)
+canReachThrough2Movies(A1, A2, Mov1, Mov2, M) :-
+    path2(A1, A2, Mov1, Mov2, M, 0, 0).
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
