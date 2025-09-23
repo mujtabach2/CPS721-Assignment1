@@ -22,41 +22,45 @@
 %%%%% SECTION: q1_kb
 %%%%% You should put the atomic statements for your KB below
 
-releaseInfo(inception, 2010, 148).
-releaseInfo(titanic, 1997, 195).
-releaseInfo(the_dark_knight, 2008, 152).
+%%%%% SECTION: q1_kb
+
+releaseInfo(jaws, 1975, 124).
+releaseInfo(glass_onion, 2022, 139).
+releaseInfo(oppenheimer, 2023, 180).
+releaseInfo(midsommar, 2019, 148).
 releaseInfo(the_godfather, 1972, 175).
-releaseInfo(avengers_endgame, 2019, 181).
-releaseInfo(gladiator, 2000, 155).
-releaseInfo(pulp_fiction, 1994, 154).
-releaseInfo(the_matrix, 1999, 136).
-releaseInfo(parasite, 2019, 132).
-releaseInfo(joker, 2019, 122).
+releaseInfo(the_godfather_part_2, 1974, 202).
+releaseInfo(women_talking, 2022, 104).
+releaseInfo(carol, 2015, 118).
+releaseInfo(tar, 2022, 158).
+releaseInfo(inception, 2010, 148).
 
-directedBy(inception, christopher_nolan).
-directedBy(titanic, james_cameron).
+directedBy(jaws, steven_spielberg).
+directedBy(oppenheimer, christopher_nolan).
+directedBy(midsommar, ari_aster).
 directedBy(the_godfather, francis_ford_coppola).
-directedBy(avengers_endgame, anthony_russo).
-directedBy(avengers_endgame, joe_russo).
-directedBy(parasite, bong_joon_ho).
-directedBy(joker, todd_phillips).
-directedBy(the_dark_knight, christopher_nolan).
-directedBy(gladiator, ridley_scott).
-directedBy(pulp_fiction, quentin_tarantino).
-directedBy(the_matrix, wachowski_sisters).
+directedBy(the_godfather_part_2, francis_ford_coppola).
+directedBy(glass_onion, rian_johnson).
+directedBy(women_talking, sarah_polley).
+directedBy(carol, todd_haynes).
+directedBy(tar, todd_field).
+directedBy(inception, christopher_nolan).
 
-actedIn(leonardo_dicaprio, inception, dom_cobb).
-actedIn(kate_winslet, titanic, rose_dewitt_bukater).
+actedIn(janelle_monae, glass_onion, helen).
+actedIn(daniel_crag, glass_onion, benoit_blanc).
+actedIn(cillian_murphy, oppenheimer, j_robert_oppenheimer).
+actedIn(florence_pugh, oppenheimer, jean_tatlock).
+actedIn(florence_pugh, midsommar, dani_ardor).
 actedIn(marlon_brando, the_godfather, vito_corleone).
-actedIn(robert_downey_jr, avengers_endgame, tony_stark).
-actedIn(keanu_reeves, the_matrix, neo).
-actedIn(song_kang_ho, parasite, kim_ki-taek).
-actedIn(joaquin_phoenix, joker, arthur_fleck).
-actedIn(christian_bale, the_dark_knight, bruce_wayne).
-actedIn(russell_crowe, gladiator, maximus).
-actedIn(john_travolta, pulp_fiction, vincent_vega).
-actedIn(tom_hanks, inception, _).  % Added for testing
-actedIn(tom_hanks, titanic, _).   % Added for testing
+actedIn(al_pacino, the_godfather, michael_corleone).
+actedIn(al_pacino, the_godfather_part_2, michael_corleone).
+actedIn(cate_blanchett, carol, carol_aird).
+actedIn(cate_blanchett, tar, lydia_tar).
+actedIn(rooney_mara, women_talking, ona).
+actedIn(leonardo_dicaprio, inception, dom_cobb).
+
+%%%%% END KB
+
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
