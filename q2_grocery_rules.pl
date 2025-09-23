@@ -31,9 +31,19 @@
 
 %%%%% SECTION: q2_rules
 %%%%% You should put your rules in this section, including helper predicates.
+costPerUnitAfterTax(Product, AfterTax):- cost(Product, Cost), taxable(Product), taxRate(Rate), AfterTax is Cost *(1+ Rate).
+costPerUnitAfterTax(Product, AfterTax):- cost(Product, Cost), not (taxable(Product)), AfterTax is Cost.
 
+quantity(Product, Qty):- numPurchased(Product, Count), twoForOneSale(Product), Free is Count // 2, 
+Qty is Count - Free.
+quantity(Product, Qty):- numPurchased(Product, Count), not(twoForOneSale(Product)), Qty is Count.
 
+costPerUnitAfterTaxAndSale(Product, Total):- costPerUnitAfterTax(Product, UnitCost), quantity(Product, Qty),
+Total is UnitCost * Qty.
 
+totalCost(Cost) :- costPerUnitAfterTaxAndSale(milk, M), costPerUnitAfterTaxAndSale(tomato, T),
+costPerUnitAfterTaxAndSale(orange, O), costPerUnitAfterTaxAndSale(marshamllow, F),
+costPerUnitAfterTaxAndSale(icecream, I), Cost is M + T + O + F + I.
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW
