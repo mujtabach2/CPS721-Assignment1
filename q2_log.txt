@@ -31,30 +31,54 @@
 %%%%% SECTION: q2_queries
 
 %%%%%% QUERY 1
-% EXPLANATION: 
-
+% EXPLANATION: Checks the after-tax price of milk (taxable product)
+costPerUnitAfterTax(milk, X).
 
 
 %%%%%% QUERY 2
-% EXPLANATION: 
-
+% EXPLANATION: checks the after-tax price of tomato (non-taxable product)
+costPerUnitAfterTax(tomato, X).
 
 
 %%%%%% QUERY 3
-% EXPLANATION: 
-
+% EXPLANATION: check the total cost for orange which is on sale (two-for-one)
+costPerUnitAfterTaxAndSale(orange, X).
 
 
 %%%%%% QUERY 4
-% EXPLANATION: 
-
+% EXPLANATION: check the total cost for marshmallow which is not on sale
+costPerUnitAfterTaxAndSale(marshamllow, X).
 
 
 %%%%%% QUERY 5
-% EXPLANATION: 
-
+% EXPLANATION: calculates the total cost of all five products
+totalCost(X).
 
 
 
 %%%%% SECTION: q2_interaction_log
 % Put a log of your interaction of your testing with the above queries here
+%%%%%% QUERY 1
+?- costPerUnitAfterTax(milk, X).
+X = 4.52
+Yes 
+
+%%%%%% QUERY 2
+?- costPerUnitAfterTax(tomato, X).
+X = 2
+Yes
+
+%%%%%% QUERY 3
+?- costPerUnitAfterTaxAndSale(orange, X).
+X = 4
+Yes
+
+%%%%%% QUERY 4
+?- costPerUnitAfterTaxAndSale(marshamllow, X).
+X = 24
+Yes
+
+%%%%%% QUERY 5
+?- totalCost(X).
+X = 52.519999999999996
+Yes
