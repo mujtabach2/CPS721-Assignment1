@@ -94,7 +94,7 @@ year(2020). year(2021). year(2022). year(2023). year(2024). year(2025).
 %%% QUERY 1: Did Steven Spielberg direct "Jaws"?
 % For this query, use the constants steven_spielberg and jaws to refer to 
 % Steven Spielberg and "Jaws", respectively.
-query1 :- true.
+query1 :- directedBy(jaws, steven_spielberg).
 
 
 %%% QUERY 2: What character did Janelle Monae play in "Glass Onion"?
