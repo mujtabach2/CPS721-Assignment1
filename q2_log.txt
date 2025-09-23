@@ -58,27 +58,22 @@ totalCost(X).
 
 %%%%% SECTION: q2_interaction_log
 % Put a log of your interaction of your testing with the above queries here
-%%%%%% QUERY 1
 ?- costPerUnitAfterTax(milk, X).
 X = 4.52
 Yes 
 
-%%%%%% QUERY 2
 ?- costPerUnitAfterTax(tomato, X).
 X = 2
 Yes
 
-%%%%%% QUERY 3
 ?- costPerUnitAfterTaxAndSale(orange, X).
 X = 4
 Yes
 
-%%%%%% QUERY 4
 ?- costPerUnitAfterTaxAndSale(marshamllow, X).
 X = 24
 Yes
 
-%%%%%% QUERY 5
 ?- totalCost(X).
 X = 52.519999999999996
 Yes
