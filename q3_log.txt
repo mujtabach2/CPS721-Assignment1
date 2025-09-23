@@ -3,15 +3,14 @@
 % If you have 2 group members, leave the last entry blank.
 %
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Abdulrehman Saleh
+%%%%% STUDENT ID: 501269110
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Hamed Bakkar
+%%%%% STUDENT ID: 501226875
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
-
+%%%%% NAME: Mujtaba Chaudhry
+%%%%% STUDENT ID: 501192713
 
 % Add your queries below. Please use the following format
 % 
@@ -23,95 +22,142 @@
 % in English of what the query tests. Omit the "%" on the line with the query
 % Don't forget to end queries with a period.
 
-
-
-
-
 %%%%% SECTION: q3a_queries
+% Put your queries for testing canReach in this section
 
-%%%%%% QUERY 1
-% EXPLANATION: 
+%%%%% QUERY 1
+% EXPLANATION: Tests base case - can Leonardo DiCaprio reach himself in 0 steps
+canReach(leonardo_dicaprio, leonardo_dicaprio, 0).
 
+%%%%% QUERY 2
+% EXPLANATION: Tests if Leonardo DiCaprio can reach Tom Hanks in 1 step (direct connection)
+canReach(leonardo_dicaprio, tom_hanks, 1).
 
+%%%%% QUERY 3
+% EXPLANATION: Tests if Leonardo DiCaprio can reach Kate Winslet in 2 steps (multi-hop path)
+canReach(leonardo_dicaprio, kate_winslet, 2).
 
-%%%%%% QUERY 2
-% EXPLANATION: 
+%%%%% QUERY 4
+% EXPLANATION: Tests if Leonardo DiCaprio can reach Kate Winslet in 1 step (should fail - no direct connection)
+canReach(leonardo_dicaprio, kate_winslet, 1).
 
-
-
-%%%%%% QUERY 3
-% EXPLANATION: 
-
-
-
-%%%%%% QUERY 4
-% EXPLANATION: 
-
-
-
-%%%%%% QUERY 5
-% EXPLANATION: 
-
-
-
+%%%%% QUERY 5
+% EXPLANATION: Tests if Leonardo DiCaprio can reach Marlon Brando in 2 steps (should fail - different movie clusters)
+canReach(leonardo_dicaprio, marlon_brando, 2).
 
 %%%%% SECTION: q3b_queries
 % Put your queries for testing canReachThroughMovie in this section
 
-%%%%%% QUERY 1
-% EXPLANATION: 
+%%%%% QUERY 1
+% EXPLANATION: Tests if Tom Hanks can reach Leonardo DiCaprio through inception in 2 steps
+canReachThroughMovie(tom_hanks, leonardo_dicaprio, inception, 2).
 
+%%%%% QUERY 2
+% EXPLANATION: Tests if Tom Hanks can reach himself through titanic in 2 steps
+canReachThroughMovie(tom_hanks, tom_hanks, titanic, 2).
 
+%%%%% QUERY 3
+% EXPLANATION: Finds all actors who can reach Leonardo DiCaprio through inception in 1 step
+canReachThroughMovie(X, leonardo_dicaprio, inception, 1).
 
-%%%%%% QUERY 2
-% EXPLANATION: 
+%%%%% QUERY 4
+% EXPLANATION: Tests if Christian Bale can reach any actor through the_dark_knight in 1 step (should fail due to no self-loops)
+canReachThroughMovie(christian_bale, X, the_dark_knight, 1).
 
-
-
-%%%%%% QUERY 3
-% EXPLANATION: 
-
-
-
-%%%%%% QUERY 4
-% EXPLANATION: 
-
-
-
-%%%%%% QUERY 5
-% EXPLANATION: 
-
-
-
+%%%%% QUERY 5
+% EXPLANATION: Tests through which movie Tom Hanks can reach Kate Winslet in 2 steps
+canReachThroughMovie(tom_hanks, kate_winslet, M, 2).
 
 %%%%% SECTION: q3c_queries
 % Put your queries for testing canReachThrough2Movies in this section
 
-%%%%%% QUERY 1
-% EXPLANATION: 
+%%%%% QUERY 1
+% EXPLANATION: Tests if Tom Hanks can reach Leonardo DiCaprio through both inception and titanic in 3 steps
+canReachThrough2Movies(tom_hanks, leonardo_dicaprio, inception, titanic, 3).
 
+%%%%% QUERY 2
+% EXPLANATION: Tests if Tom Hanks can reach himself through inception twice in 4 steps (same movie appearing twice)
+canReachThrough2Movies(tom_hanks, tom_hanks, inception, inception, 4).
 
+%%%%% QUERY 3
+% EXPLANATION: Finds all actors who can reach Leonardo DiCaprio through both inception and titanic in 2 steps
+canReachThrough2Movies(X, leonardo_dicaprio, inception, titanic, 2).
 
-%%%%%% QUERY 2
-% EXPLANATION: 
+%%%%% QUERY 4
+% EXPLANATION: Tests if Christian Bale can reach any actor through both the_dark_knight and inception in 3 steps
+canReachThrough2Movies(christian_bale, X, the_dark_knight, inception, 3).
 
-
-
-%%%%%% QUERY 3
-% EXPLANATION: 
-
-
-
-%%%%%% QUERY 4
-% EXPLANATION: 
-
-
-
-%%%%%% QUERY 5
-% EXPLANATION: 
-
-
-
+%%%%% QUERY 5
+% EXPLANATION: Tests through which pair of movies Tom Hanks can reach Kate Winslet in 3 steps
+canReachThrough2Movies(tom_hanks, kate_winslet, M1, M2, 3).
 
 %%%%% SECTION: q3_interaction_log
 % Put a log of your interaction of your tests with the above queries for all 3 parts here
+
+?- [q3_bacon1].
+Yes (0.00s cpu)
+
+?- canReach(leonardo_dicaprio, leonardo_dicaprio, 0).
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- canReach(leonardo_dicaprio, tom_hanks, 1).
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- canReach(leonardo_dicaprio, kate_winslet, 2).
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- canReach(leonardo_dicaprio, kate_winslet, 1).
+No (0.00s cpu)
+
+?- canReach(leonardo_dicaprio, marlon_brando, 2).
+No (0.00s cpu)
+
+?- [q3_bacon2].
+Yes (0.00s cpu)
+
+?- canReachThroughMovie(tom_hanks, leonardo_dicaprio, inception, 2).
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- canReachThroughMovie(tom_hanks, tom_hanks, titanic, 2).
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- canReachThroughMovie(X, leonardo_dicaprio, inception, 1).
+X = tom_hanks
+Yes (0.00s cpu, solution 1, maybe more) ;
+No (0.00s cpu)
+
+?- canReachThroughMovie(christian_bale, X, the_dark_knight, 1).
+No (0.00s cpu)
+
+?- canReachThroughMovie(tom_hanks, kate_winslet, M, 2).
+M = titanic
+Yes (0.00s cpu, solution 1, maybe more) ;
+No (0.00s cpu)
+
+?- [q3_bacon3].
+Yes (0.00s cpu)
+
+?- canReachThrough2Movies(tom_hanks, leonardo_dicaprio, inception, titanic, 3).
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- canReachThrough2Movies(tom_hanks, tom_hanks, inception, inception, 4).
+Yes (0.00s cpu, solution 1, maybe more)
+
+?- canReachThrough2Movies(X, leonardo_dicaprio, inception, titanic, 2).
+X = tom_hanks
+Yes (0.00s cpu, solution 1, maybe more) ;
+No (0.00s cpu)
+
+?- canReachThrough2Movies(christian_bale, X, the_dark_knight, inception, 3).
+X = tom_hanks
+Yes (0.00s cpu, solution 1, maybe more) ;
+No (0.00s cpu)
+
+?- canReachThrough2Movies(tom_hanks, kate_winslet, M1, M2, 3).
+M1 = inception
+M2 = titanic
+Yes (0.00s cpu, solution 1, maybe more) ;
+M1 = titanic
+M2 = inception
+Yes (0.00s cpu, solution 2, maybe more) ;
+No (0.00s cpu)

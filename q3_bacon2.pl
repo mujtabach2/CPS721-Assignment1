@@ -9,10 +9,10 @@
 %%%%% NAME: Hamed Bakkar
 %%%%% STUDENT ID: 501226875
 %%%%%
-%%%%% NAME:Mujtaba Chaudhry
+%%%%% NAME: Mujtaba Chaudhry
 %%%%% STUDENT ID: 501192713
 %
-% Add the required statements in the q3a_can_reach_through_movie section below.
+% Add the required statements in the q3b_can_reach_through_movie section below.
 % Any helper predicates should also be added to that section.
 % Do NOT delete, edit, or add SECTION headers.
 % If you put statements in the wrong section, you will lose marks.
@@ -20,66 +20,47 @@
 % You may add additional comments as you choose but DO NOT MODIFY 
 % the already included comment lines below
 %
-%%%%% SECTION: q3c_kb_import
+
+%%%%% SECTION: q3b_kb_import
 % The following line will import your movie KB. You can feel free to
 % edit this line if you want to import and test on different KBs.
 % We will ignore this section when testing your code, and instead test
 % on our own KBs.
 :- [q1_movie_kb].
 
-%%%%% SECTION: q3c_can_reach_through_2_movies
-% You define canReachThrough2Movies and any helper predicates below.
-% Do NOT use an import statement to reuse q3b code.
+%%%%% SECTION: q3b_can_reach_through_movie
+% You define canReachThroughMovie and any helper predicates below.
+% Do NOT use an import statement to reuse q3a code.
 
-% Base case: Reach target only if both movies are included (Passed1=1 and Passed2=1)
-path2(A, A, _, _, Rem, 1, 1) :-
+% Base case: Reach target only if the required movie has been used (Passed=1)
+pathMovie(A, A, _, Rem, 1) :-
     Rem >= 0.
 
-% Recursive case: Move to next actor via a movie, update flags
-path2(Current, Target, Mov1, Mov2, Rem, Passed1, Passed2) :-
+% Recursive case: Move to next actor via a movie, update flag if required movie is used
+pathMovie(Current, Target, RequiredMovie, Rem, Passed) :-
     Rem > 0,
     actedIn(Current, Mov, _),
     find_coactors(Current, Mov, Next),
     not(Current = Next),
-    update_flags(Passed1, Passed2, Mov, Mov1, Mov2, NewPassed1, NewPassed2),
+    update_movie_flag(Passed, Mov, RequiredMovie, NewPassed),
     NewRem is Rem - 1,
-    path2(Next, Target, Mov1, Mov2, NewRem, NewPassed1, NewPassed2).
+    pathMovie(Next, Target, RequiredMovie, NewRem, NewPassed).
 
-
-update_flags(1, 1, _, _, _, 1, 1).
-
-% If first flag is set but second isnt, check if current movie is Mov2
-update_flags(1, 0, Mov2, _, Mov2, 1, 1).
-update_flags(1, 0, Mov, _, Mov2, 1, 0) :-
-    not(Mov = Mov2).
-
-% If second flag is set but first isnt, check if current movie is Mov1
-update_flags(0, 1, Mov1, Mov1, _, 1, 1).
-update_flags(0, 1, Mov, Mov1, _, 0, 1) :-
-    not(Mov = Mov1).
-
-% If neither flag is set, check both movies
-update_flags(0, 0, Mov, Mov1, Mov2, NewPassed1, NewPassed2) :-
-    check_movie1(Mov, Mov1, NewPassed1),
-    check_movie2(Mov, Mov2, NewPassed2).
-
-% Helper predicates for movie checking
-check_movie1(Mov1, Mov1, 1).
-check_movie1(Mov, Mov1, 0) :-
-    not(Mov = Mov1).
-
-check_movie2(Mov2, Mov2, 1).
-check_movie2(Mov, Mov2, 0) :-
-    not(Mov = Mov2).
+% Update flag: if already passed (1), stay 1; if not passed (0), check if current movie matches
+update_movie_flag(1, _, _, 1).
+update_movie_flag(0, Mov, RequiredMovie, 1) :-
+    Mov = RequiredMovie.
+update_movie_flag(0, Mov, RequiredMovie, 0) :-
+    not(Mov = RequiredMovie).
 
 % Find co-actors in the same movie
 find_coactors(A1, Mov, A3) :-
     actedIn(A3, Mov, _),
     not(A1 = A3).
 
-% Main predicate: Start with both flags unset (0,0)
-canReachThrough2Movies(A1, A2, Mov1, Mov2, M) :-
-    path2(A1, A2, Mov1, Mov2, M, 0, 0).
+% Main predicate: Start with flag unset (0)
+canReachThroughMovie(A1, A2, Movie, M) :-
+    pathMovie(A1, A2, Movie, M, 0).
 
 %%%%% END
 % DO NOT PUT ANY ATOMIC PROPOSITIONS OR LINES BELOW

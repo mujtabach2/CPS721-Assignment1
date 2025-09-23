@@ -43,7 +43,8 @@ path2(Current, Target, Mov1, Mov2, Rem, Passed1, Passed2) :-
     find_coactors(Current, Mov, Next),
     not(Current = Next),
     update_flags(Passed1, Passed2, Mov, Mov1, Mov2, NewPassed1, NewPassed2),
-    path2(Next, Target, Mov1, Mov2, Rem - 1, NewPassed1, NewPassed2).
+    NewRem is Rem - 1,
+    path2(Next, Target, Mov1, Mov2, NewRem, NewPassed1, NewPassed2).
 
 
 update_flags(1, 1, _, _, _, 1, 1).
