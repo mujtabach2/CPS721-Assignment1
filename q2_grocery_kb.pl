@@ -23,7 +23,19 @@
 
 %%%%% SECTION: q2_kb
 %%%%% You should put the atomic statements for your KB below
-
+cost(milk, 4).
+cost(tomato, 2).
+cost(orange, 2).
+cost(marshamllow, 3).
+cost(icecream, 3).
+numPurchased(milk, 1).
+numPurchased(tomato, 4).
+numPurchased(orange, 3).
+numPurchased(marshamllow, 8).
+numPurchased(icecream, 4).
+twoForOneSale(orange).
+taxable(milk).
+taxRate(0.13).
 
 
 
