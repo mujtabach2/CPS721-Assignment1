@@ -9,8 +9,8 @@
 %%%%% NAME: Hamed Bakkar
 %%%%% STUDENT ID: 501226875
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Abdulrehman Saleh
+%%%%% STUDENT ID: 501269110
 
 
 % Add your queries below. Please use the following format
