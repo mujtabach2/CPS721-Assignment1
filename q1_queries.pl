@@ -129,7 +129,7 @@ query7(Actor) :- actedIn(Actor, M1, _), releaseInfo(M1, Y, D1), D1 >= 180,
 
 %%% QUERY 8: Is there a year from 2010 to 2019 (inclusive) in which Sarah Polley did not direct a movie?
 % For this query, use the constant sarah_polley to refer to Sarah Polley
-query8(Year) :-  year(Year), Year >= 2010, Year =< 2019, \+ (directedBy(Movie, sarah_polley), releaseInfo(Movie, Year, _)).
+query8(Year) :-  year(Year), Year >= 2010, Year =< 2019, not (directedBy(Movie, sarah_polley), releaseInfo(Movie, Year, _)).
 
 %%% QUERY 9: Did anyone act in 3 movies that were released in 3 consecutive years?
 query9(Actor) :- actedIn(Actor, M1, _), releaseInfo(M1, Y, _),
@@ -138,12 +138,12 @@ query9(Actor) :- actedIn(Actor, M1, _), releaseInfo(M1, Y, _),
 
 %%% QUERY 10: What is the oldest movie in the knowledge base?
 query10(Movie) :- releaseInfo(Movie, Year, _),
-                  \+ (releaseInfo(_, Year2, _), Year2 < Year).
+                  not (releaseInfo(_, Year2, _), Year2 < Year).
 
 %%% QUERY 11: What is the longest movie that Cate Blanchett has acted in?
 % For this query, use the constant cate_blanchett to refer to Cate Blanchett
 query11(Movie) :- actedIn(cate_blanchett, Movie, _), releaseInfo(Movie, _, Duration),
-                  \+ (actedIn(cate_blanchett, M2, _), releaseInfo(M2, _, D2), D2 > Duration).
+                  not (actedIn(cate_blanchett, M2, _), releaseInfo(M2, _, D2), D2 > Duration).
 
 
 
