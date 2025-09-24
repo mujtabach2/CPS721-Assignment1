@@ -109,7 +109,7 @@ query3(Actor) :- actedIn(Actor, oppenheimer, _), actedIn(Actor, midsommar, _).
 %%% QUERY 4: Did any actor who appeared in ``The Godfather", not appear in ``The Godfather Part II"?
 % For this query, use the constants the_godfather and the_godfather_part_2, to refer
 % to "The Godfather" and "The Godfather Part II", respectively.
-query4(Actor) :- actedIn(Actor, the_godfather, _), \+ actedIn(Actor, the_godfather_part_2, _).
+query4(Actor) :- actedIn(Actor, the_godfather, _), not(actedIn(Actor, the_godfather_part_2, _)).
 
 %%% QUERY 5: Did anyone direct a movie before 1980 and after 2010?
 % Note that "before" and "after" are not inclusive
