@@ -129,8 +129,7 @@ query7(Actor) :- actedIn(Actor, M1, _), releaseInfo(M1, Y, D1), D1 >= 180,
 
 %%% QUERY 8: Is there a year from 2010 to 2019 (inclusive) in which Sarah Polley did not direct a movie?
 % For this query, use the constant sarah_polley to refer to Sarah Polley
-query8(Year) :- between(2010, 2019, Year),
-                \+ (directedBy(Movie, sarah_polley), releaseInfo(Movie, Year, _)).
+query8(Year) :-  year(Year), Year >= 2010, Year =< 2019, \+ (directedBy(Movie, sarah_polley), releaseInfo(Movie, Year, _)).
 
 %%% QUERY 9: Did anyone act in 3 movies that were released in 3 consecutive years?
 query9(Actor) :- actedIn(Actor, M1, _), releaseInfo(M1, Y, _),
