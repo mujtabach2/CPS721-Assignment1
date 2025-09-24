@@ -92,58 +92,59 @@ year(2020). year(2021). year(2022). year(2023). year(2024). year(2025).
 % "false" keyword.
 
 %%% QUERY 1: Did Steven Spielberg direct "Jaws"?
-% For this query, use the constants steven_spielberg and jaws to refer to 
+% For this query, use the constants steven_spielberg and jaws to refer to
 % Steven Spielberg and "Jaws", respectively.
 query1 :- directedBy(jaws, steven_spielberg).
-
 
 %%% QUERY 2: What character did Janelle Monae play in "Glass Onion"?
 % For this query, use the constants janelle_monae and glass_onion to refer to
 % Janelle Monae and Glass Onion, respectively.
-query2(Character) :- true.
-
+query2(Character) :- actedIn(janelle_monae, glass_onion, Character).
 
 %%% QUERY 3: Which actor was in both "Oppenheimer" and "Midsommar"?
 % For this query, use the constants oppenheimer and midsommar to refer to
 % Oppenheimer and Midsommar, respectively.
-query3(Actor) :- true.
-
+query3(Actor) :- actedIn(Actor, oppenheimer, _), actedIn(Actor, midsommar, _).
 
 %%% QUERY 4: Did any actor who appeared in ``The Godfather", not appear in ``The Godfather Part II"?
 % For this query, use the constants the_godfather and the_godfather_part_2, to refer
 % to "The Godfather" and "The Godfather Part II", respectively.
-query4(Actor) :- true.
-
+query4(Actor) :- actedIn(Actor, the_godfather, _), \+ actedIn(Actor, the_godfather_part_2, _).
 
 %%% QUERY 5: Did anyone direct a movie before 1980 and after 2010?
 % Note that "before" and "after" are not inclusive
-query5(Director) :- true.
-
+query5(Director) :- directedBy(Movie1, Director), releaseInfo(Movie1, Year1, _), Year1 < 1980,
+                    directedBy(Movie2, Director), releaseInfo(Movie2, Year2, _), Year2 > 2010.
 
 %%% QUERY 6: Did any actor appear in more than one movie in 2023?
-query6(Actor) :- true.
-
+query6(Actor) :- actedIn(Actor, Movie1, _), releaseInfo(Movie1, 2023, _),
+                 actedIn(Actor, Movie2, _), releaseInfo(Movie2, 2023, _),
+                 Movie1 \= Movie2.
 
 %%% QUERY 7: Did any actor appear in more than one movie in the same year that were all at least 3 hours long?
-query7(Actor) :- true.
+query7(Actor) :- actedIn(Actor, M1, _), releaseInfo(M1, Y, D1), D1 >= 180,
+                 actedIn(Actor, M2, _), releaseInfo(M2, Y, D2), D2 >= 180,
+                 M1 \= M2.
 
 
 %%% QUERY 8: Is there a year from 2010 to 2019 (inclusive) in which Sarah Polley did not direct a movie?
 % For this query, use the constant sarah_polley to refer to Sarah Polley
-query8(Year) :- true.
-
+query8(Year) :- between(2010, 2019, Year),
+                \+ (directedBy(Movie, sarah_polley), releaseInfo(Movie, Year, _)).
 
 %%% QUERY 9: Did anyone act in 3 movies that were released in 3 consecutive years?
-query9(Actor) :- true.
-
+query9(Actor) :- actedIn(Actor, M1, _), releaseInfo(M1, Y, _),
+                 actedIn(Actor, M2, _), releaseInfo(M2, Y1, _), Y1 is Y+1,
+                 actedIn(Actor, M3, _), releaseInfo(M3, Y2, _), Y2 is Y+2.
 
 %%% QUERY 10: What is the oldest movie in the knowledge base?
-query10(Movie) :- true.
-
+query10(Movie) :- releaseInfo(Movie, Year, _),
+                  \+ (releaseInfo(_, Year2, _), Year2 < Year).
 
 %%% QUERY 11: What is the longest movie that Cate Blanchett has acted in?
 % For this query, use the constant cate_blanchett to refer to Cate Blanchett
-query11(Movie) :- true.
+query11(Movie) :- actedIn(cate_blanchett, Movie, _), releaseInfo(Movie, _, Duration),
+                  \+ (actedIn(cate_blanchett, M2, _), releaseInfo(M2, _, D2), D2 > Duration).
 
 
 
