@@ -49,23 +49,23 @@ canReach(leonardo_dicaprio, marlon_brando, 2).
 % Put your queries for testing canReachThroughMovie in this section
 
 %%%%% QUERY 1
-% EXPLANATION: Tests if Tom Hanks can reach Leonardo DiCaprio through inception in 2 steps
+% EXPLANATION: Tests if Tom Hanks can reach Leonardo DiCaprio through inception in 2 steps (both actors are in inception)
 canReachThroughMovie(tom_hanks, leonardo_dicaprio, inception, 2).
 
 %%%%% QUERY 2
-% EXPLANATION: Tests if Tom Hanks can reach himself through titanic in 2 steps
+% EXPLANATION: Tests if Tom Hanks can reach himself through titanic in 2 steps. 
 canReachThroughMovie(tom_hanks, tom_hanks, titanic, 2).
 
 %%%%% QUERY 3
-% EXPLANATION: Finds all actors who can reach Leonardo DiCaprio through inception in 1 step
+% EXPLANATION: Finds all actors who can reach Leonardo DiCaprio through inception in 1 step. tests variable binding and direct movie connections
 canReachThroughMovie(X, leonardo_dicaprio, inception, 1).
 
 %%%%% QUERY 4
-% EXPLANATION: Tests if Christian Bale can reach any actor through the_dark_knight in 1 step (should fail due to no self-loops)
+% EXPLANATION: Tests if Christian Bale can reach any actor through the_dark_knight in 1 step. (no self-loops allowed)
 canReachThroughMovie(christian_bale, X, the_dark_knight, 1).
 
 %%%%% QUERY 5
-% EXPLANATION: Tests through which movie Tom Hanks can reach Kate Winslet in 2 steps
+% EXPLANATION: Tests through which movie Tom Hanks can reach Kate Winslet in 2 steps. tests variable movie binding to find connecting movies
 canReachThroughMovie(tom_hanks, kate_winslet, M, 2).
 
 %%%%% SECTION: q3c_queries

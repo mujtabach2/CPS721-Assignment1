@@ -9,8 +9,8 @@
 %%%%% NAME: Hamed Bakkar
 %%%%% STUDENT ID: 501226875
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Mujtaba Chaudhry
+%%%%% STUDENT ID: 501192713
 %
 % Add the required KB statements in the section below.
 % Do NOT delete, edit, or add SECTION headers.

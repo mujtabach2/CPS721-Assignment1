@@ -9,8 +9,8 @@
 %%%%% NAME: Hamed Bakkar
 %%%%% STUDENT ID: 501226875
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Mujtaba Chaudhry
+%%%%% STUDENT ID: 501192713
 %
 % Add the required statements in the correct section below.
 % You should not use helper predicates for these queries.
