@@ -9,8 +9,8 @@
 %%%%% NAME: Hamed Bakkar
 %%%%% STUDENT ID:501226875
 %%%%%
-%%%%% NAME:
-%%%%% STUDENT ID:
+%%%%% NAME: Abdulrehman Saleh
+%%%%% STUDENT ID: 501269110
 %
 % Add the required statements in the q2_rules section below.
 % Any helper predicates should also be added to that section.
