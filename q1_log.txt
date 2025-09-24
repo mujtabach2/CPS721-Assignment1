@@ -15,3 +15,50 @@
 
 %%%%% SECTION: q1_log
 % Put a log of your interaction of your testing with the queries here
+
+?- directedBy(jaws, steven_spielberg).
+Yes 
+
+?- actedIn(janelle_monae, glass_onion, Character).
+Character = helen
+Yes
+
+?- actedIn(Actor, oppenheimer, _74), actedIn(Actor, midsommar, _87).
+Actor = florence_pugh
+Yes
+
+?- actedIn(Actor, the_godfather, _64), not actedIn(Actor, the_godfather_part_2, _79).
+Actor = marlon_brando
+Yes (0.00s cpu, solution 1, maybe more)
+No 
+
+?- directedBy(Movie1, Director), releaseInfo(Movie1, Year1, _101), Year1 < 1980, directedBy(Movie2, Director), releaseInfo(Movie2, Year2, _140), Year2 > 2010.
+No
+
+?- actedIn(Actor, Movie1, _87), releaseInfo(Movie1, 2023, _100), actedIn(Actor, Movie2, _118), releaseInfo(Movie2, 2023, _131), Movie1 \= Movie2.
+No
+
+?- actedIn(Actor, M1, _86), releaseInfo(M1, Y, D1), D1 >= 180, actedIn(Actor, M2, _133), releaseInfo(M2, Y, D2), D2 >= 180, M1 \= M2.
+No
+
+?- year(Year), Year >= 2010, Year =< 2019, not (directedBy(Movie, sarah_polley), releaseInfo(Movie, Year, _113)).
+Year = 2010
+Movie = Movie
+Yes 
+
+?- actedIn(Actor, M1, _76), releaseInfo(M1, Y, _94), actedIn(Actor, M2, _112), releaseInfo(M2, Y1, _130), Y1 is Y + 1, actedIn(Actor, M3, _157), releaseInfo(M3, Y2, _175), Y2 is Y + 2.
+No
+
+?- releaseInfo(Movie, Year, _68), not (releaseInfo(_86, Year2, _88), Year2 < Year).
+Movie = the_godfather
+Year = 1972
+Year2 = Year2
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+
+actedIn(cate_blanchett, Movie, _81), releaseInfo(Movie, _98, Duration), not (actedIn(cate_blanchett, M2, _119), releaseInfo(M2, _136, D2), D2 > Duration).
+Movie = tar
+Duration = 158
+M2 = M2
+D2 = D2
+Yes 
