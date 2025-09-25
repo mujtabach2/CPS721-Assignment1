@@ -47,7 +47,7 @@ directedBy(tar, todd_field).
 directedBy(inception, christopher_nolan).
 
 actedIn(janelle_monae, glass_onion, helen).
-actedIn(daniel_crag, glass_onion, benoit_blanc).
+actedIn(daniel_craig, glass_onion, benoit_blanc).
 actedIn(cillian_murphy, oppenheimer, j_robert_oppenheimer).
 actedIn(florence_pugh, oppenheimer, jean_tatlock).
 actedIn(florence_pugh, midsommar, dani_ardor).
@@ -56,8 +56,10 @@ actedIn(al_pacino, the_godfather, michael_corleone).
 actedIn(al_pacino, the_godfather_part_2, michael_corleone).
 actedIn(cate_blanchett, carol, carol_aird).
 actedIn(cate_blanchett, tar, lydia_tar).
+actedIn(rooney_mara, carol, therese_belivet).
 actedIn(rooney_mara, women_talking, ona).
 actedIn(leonardo_dicaprio, inception, dom_cobb).
+actedIn(cillian_murphy, inception, robert_fischer).
 
 %%%%% END KB
 

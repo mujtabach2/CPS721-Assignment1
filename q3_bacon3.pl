@@ -26,7 +26,7 @@
 % edit this line if you want to import and test on different KBs.
 % We will ignore this section when testing your code, and instead test
 % on our own KBs.
-:- [q3_kb].
+:- [q1_movie_kb].
 
 %%%%% SECTION: q3c_can_reach_through_2_movies
 % You define canReachThrough2Movies and any helper predicates below.
